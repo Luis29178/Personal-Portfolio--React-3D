@@ -7,6 +7,10 @@ import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../HOC";
 import { slideIn } from "../utils/motion";
 
+//Emailjs-TemplateId: template_ko9i1vt
+//Eailjs-ServiceID: service_5cl6ydo
+//Emailjs-PublicKey: sJFP9RbzipHVo-moP
+
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
@@ -16,8 +20,46 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {};
-  const handleSubmit = (e) => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm({ ...form, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_5cl6ydo",
+        "template_ko9i1vt",
+        {
+          from_name: form.name,
+          to_name: "Luis Bazaldua",
+          from_email: form.email,
+          to_email: "luis29178@gmail.com",
+          message: form.message,
+        },
+        "sJFP9RbzipHVo-moP"
+      )
+      .then(() => {
+        setLoading(false);
+        alert("Thankyou I will get back to you as soon as possible.");
+
+        setForm(
+          {
+            name: "",
+            email: "",
+            message: "",
+          },
+          (error) => {
+            setLoading(false);
+            console.log(error);
+            alert("Somthing went wrong.");
+          }
+        );
+      });
+  };
 
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
@@ -74,7 +116,12 @@ const Contact = () => {
           </button>
         </form>
       </motion.div>
-      <motion.div variants={slideIn("right", "tween", 0.2, 1)} className=" xl:flex-1 xl:h-auto md:h-[550px h-[350px]" ><EarthCanvas/></motion.div>
+      <motion.div
+        variants={slideIn("right", "tween", 0.2, 1)}
+        className=" xl:flex-1 xl:h-auto md:h-[550px h-[350px]"
+      >
+        <EarthCanvas />
+      </motion.div>
     </div>
   );
 };
