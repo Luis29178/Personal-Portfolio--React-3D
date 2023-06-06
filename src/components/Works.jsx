@@ -13,7 +13,7 @@ const ProjectCard = ({
   description,
   tags,
   image,
-  sorce_code_link,
+  source_code_link,
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -34,7 +34,7 @@ const ProjectCard = ({
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
-              onClick={() => window.open(sorce_code_link, "blank")}
+              onClick={() => window.open(source_code_link, "blank")}
               className="black-gradient w-10 h-10 rounded-full flex justify-center item-center cursor-pointer"
             >
               <img
@@ -71,7 +71,7 @@ const Works = () => {
       <div className="w-full flrx">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          className="mt-3 text-secondary text-[17px] w-full leading-[30px]"
         >
           Allow me to introduce you to my personal projects, a collection of
           creative endeavors that I have poured my passion and dedication into.

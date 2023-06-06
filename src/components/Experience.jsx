@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -27,7 +29,7 @@ const ExperienceCard = ({ experience }) => {
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className='w-[75%] h-[75%] object-contain'
           />
         </div>
       }
